@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>You are an idiot!</title>
+<style>
+h1 {
+	font-family: "Arial";
+    
+}
+body {
+	background: white;
+}
+button {
+	border-radius: 25%;
+    border-color: black;
+    background: white;
+    color: black;
+}
+button:hover {
+	opacity: 0.7;
+}
+</style>
+</head>
+<body>
+<center>
+<h1 id="text">Are you an idiot?</h1>
+<button onclick="any(document.getElementById('yes'))" id="yes"><h1>Yes</h1></button> 
+<button onclick="any(document.getElementById('no'))" id="no"><h1>No</h1></button> 
+<button onclick="any(document.getElementById('idk'))" id="idk"><h1>I don't know</h1></button>
+</center>
+<script>
+function any(el) {
+	if (el.id=='yes') {
+    	alert("Okay well, take some of this!");
+    } else if (el.id=='no') {
+    	alert("I think you are!");
+    } else {
+    	alert("Then let me tell you, you are an idiot!");
+    }
+}
+function flash() {
+      let b1=document.getElementById('yes');
+      let b2=document.getElementById('no');
+      let b3=document.getElementById('idk');
+      let tx=document.getElementById('text');
+      if (document.body.style.background!='black') {
+          b1.style.color='white';
+          b1.style.background='black';
+          b1.style.borderColor='white';
+          document.body.style.background='black';
+          b2.style.color='white';
+          b2.style.background='black';
+          b2.style.borderColor='white';
+          b3.style.color='white';
+          b3.style.background='black';
+          b3.style.borderColor='white';
+          tx.style.color='white';
+	} else {
+          b1.style.color='black';
+          b1.style.background='white';
+          b1.style.borderColor='black';
+          document.body.style.background='white';
+          b2.style.color='black';
+          b2.style.background='white';
+          b2.style.borderColor='black';
+          b3.style.color='black';
+          b3.style.background='white';
+          b3.style.borderColor='black';
+          tx.style.color='black';
+    }
+}
+function sleep(time) { return new Promise(resolve => setTimeout(resolve,time));}
+async function flashLoop() {
+	while (1) {
+    	flash();
+    	await sleep(400);
+    }
+}
+flashLoop();
+</script>
+</body>
+</html>
